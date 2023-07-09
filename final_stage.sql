@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2023 at 09:28 AM
+-- Generation Time: Jul 09, 2023 at 08:20 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `final_stage`
 --
+CREATE DATABASE IF NOT EXISTS `final_stage` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `final_stage`;
 
 -- --------------------------------------------------------
 
@@ -28,7 +30,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `events` (
-  `eventId` int(11) NOT NULL,
+  `eventId` varchar(255) NOT NULL,
   `eventName` varchar(255) NOT NULL,
   `eventDate` date NOT NULL,
   `eventTime` time NOT NULL,
@@ -41,11 +43,11 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`eventId`, `eventName`, `eventDate`, `eventTime`, `eventStyleId`, `income`) VALUES
-(1, 'Concert 1', '2023-07-10', '19:00:00', 2, NULL),
-(2, 'Festival 1', '2023-07-15', '14:30:00', 5, NULL),
-(3, 'Gig 1', '2023-07-20', '20:00:00', 8, NULL),
-(4, 'Performance 1', '2023-07-22', '18:45:00', 3, NULL),
-(5, 'Show 1', '2023-07-25', '21:15:00', 6, NULL);
+('03a7b95c-2579-4456-9adb-ccd77da3b5b8', 'Crazy Folk', '2023-07-12', '23:00:00', 10, 2000),
+('1e100b20-96dd-45fa-8a21-9b34d21c5364', 'Slow Jazz', '2023-07-09', '12:00:00', 2, 2222),
+('373c715a-1433-4c9f-acd8-f662e542219e', 'Mozart Noon', '2023-07-22', '21:00:00', 1, 5000),
+('57e3a878-2e31-4fe5-9961-9ca0cf6f59b4', 'White Blues', '2023-07-11', '12:00:00', 6, 224),
+('fad327f4-3194-4365-a8c5-3a6b8b637952', 'The Lord Is Here', '2023-07-28', '13:00:00', 11, 666);
 
 -- --------------------------------------------------------
 
@@ -89,8 +91,17 @@ INSERT INTO `eventstyles` (`eventStyleId`, `eventStyleName`) VALUES
 CREATE TABLE `users` (
   `userId` int(11) NOT NULL,
   `userName` varchar(255) NOT NULL,
-  `password` varchar(8) NOT NULL
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`userId`, `userName`, `password`) VALUES
+(15, 'nick', '$2b$10$i9rXLyOSJk9PFM1uYl1i7.rBwpu2zmcBrL/9m5qSNX8Vpfd.yv9V6'),
+(16, 'saar', '$2b$10$66Jd/Axj1CF7hsUld1lkt.3.Mt.QbdtzGqbek110LlDh8fK2y8PNi'),
+(17, 'maher', '$2b$10$zqDxG7kgZ4SBSpvCVW39tu0.2JDcHNV0gnDLPHW4njlnT9gjehm5a');
 
 --
 -- Indexes for dumped tables
@@ -120,12 +131,6 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `events`
---
-ALTER TABLE `events`
-  MODIFY `eventId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
 -- AUTO_INCREMENT for table `eventstyles`
 --
 ALTER TABLE `eventstyles`
@@ -135,7 +140,7 @@ ALTER TABLE `eventstyles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
