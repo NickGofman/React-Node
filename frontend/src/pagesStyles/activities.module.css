@@ -9,6 +9,12 @@
   gap: 20px;
 }
 
+@media screen and (max-width: 600px) {
+  .cardContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
 .controls {
   display: flex;
   flex-direction: column;

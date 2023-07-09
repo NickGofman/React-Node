@@ -81,7 +81,11 @@ function Activities() {
     }));
   };
   console.log('events', events);
-
+  function sortByDate(events) {
+    return events
+      .slice()
+      .sort((a, b) => new Date(a.eventDate) - new Date(b.eventDate));
+  }
   return (
     <div className={styles.activities}>
       <h2>Activities</h2>
@@ -112,7 +116,7 @@ function Activities() {
       </div>
 
       <div className={styles.cardContainer}>
-        {events.map((event) => (
+        {sortByDate(events).map((event) => (
           <Card
             key={event.eventId}
             eventName={event.eventName}

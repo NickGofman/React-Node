@@ -8,7 +8,7 @@ function CreateEventForm({ handleCreate, musicalStyleList }) {
     eventDate: '',
     income: '',
     eventName: '',
-    eventTime: '',
+    eventTime: '21:00',
     eventStyleId: '1',
     eventStyleName: '',
   });
@@ -37,15 +37,17 @@ function CreateEventForm({ handleCreate, musicalStyleList }) {
     if (
       inputs.eventDate !== '' &&
       inputs.eventTime !== '' &&
-      inputs.eventStyleId !== ''
+      inputs.eventStyleId !== '' &&
+      inputs.eventName !== '' &&
+      inputs.income !== ''
     ) {
       handleCreate(inputs);
-      setError('Event Create!');
+      setError('Event Created!');
       setInputs({
         eventDate: '',
         income: '',
         eventName: '',
-        eventTime: '',
+        eventTime: '21:00',
         eventStyleId: '1',
         eventStyleName: '',
       });
@@ -63,14 +65,14 @@ function CreateEventForm({ handleCreate, musicalStyleList }) {
           name="eventDate"
           type="date"
           label="Date"
-          value={inputs.date}
+          value={inputs.eventDate}
           onChange={handleChange}
         />
         <Input
           name="eventTime"
           type="time"
           label="Time"
-          value={inputs.time}
+          value={inputs.eventTime}
           onChange={handleChange}
         />
         <Input

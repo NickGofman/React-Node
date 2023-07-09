@@ -1,31 +1,31 @@
 .card {
   background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
+  padding: 2rem;
 }
 
 .cardTitle {
-  font-size: 18px;
-  margin-bottom: 10px;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
 }
 
 .cardText {
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
 }
 
 /* Media Query for small screens */
-@media (max-width: 576px) {
+@media (max-width: 36rem) {
   .card {
-    padding: 10px;
+    padding: 1rem;
   }
 
   .cardTitle {
-    font-size: 16px;
-    margin-bottom: 8px;
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
   }
 
   .cardText {
-    margin-bottom: 3px;
+    margin-bottom: 0.3rem;
   }
 }

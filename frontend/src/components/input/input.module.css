@@ -1,23 +1,23 @@
 .inputContainer {
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
 }
 
 .inputContainer label {
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
   align-self: flex-start;
 }
 
 .inputContainer input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 0.8rem;
+  border: 0.1rem solid #ccc;
+  border-radius: 0.4rem;
 }
 
 .inputContainer input:focus {
   outline: none;
   border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }

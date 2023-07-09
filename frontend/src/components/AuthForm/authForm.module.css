@@ -1,23 +1,23 @@
 .authFormContainer {
-  margin-top: 20px;
+  margin-top: 2rem;
 }
 
 .authFormContainer h2 {
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 
 .authFormContainer form {
   display: grid;
-  gap: 10px;
+  gap: 1rem;
 }
 
 .authFormContainer input,
 .authFormContainer select {
-  padding: 5px;
+  padding: 0.5rem;
 }
 
 .authFormContainer p {
-  margin-top: 10px;
+  margin-top: 1rem;
   color: #ff0000;
 }
 
@@ -30,16 +30,17 @@
 .authFormContainer a:hover {
   color: #0056b3;
 }
+
 .authFormContainer button {
   background-color: #007bff;
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  padding: 1rem 2rem;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
-  border-radius: 4px;
+  font-size: 1.6rem;
+  border-radius: 0.4rem;
   cursor: pointer;
 }
 

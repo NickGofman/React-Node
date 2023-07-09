@@ -1,6 +1,8 @@
+/* home.module.css */
 .homeContainer {
   text-align: center;
   padding: 20px;
+  width: 60%;
 }
 
 .homeContainer h1 {
@@ -16,8 +18,18 @@
   color: #666;
 }
 
+.programmersGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
 .programmer {
-  margin-bottom: 30px;
+  text-align: left;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 20px;
 }
 
 .programmer h3 {
@@ -31,4 +43,14 @@
   line-height: 1.5;
   color: #555;
 }
-  
+
+.projectSection {
+  margin-top: 40px;
+  text-align: justify;
+}
+
+.projectSection p {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #444;
+}

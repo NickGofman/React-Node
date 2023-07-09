@@ -1,9 +1,18 @@
 import React from 'react';
 import styles from '../pagesStyles/home.module.css';
+
 function Home() {
   return (
     <div className={styles.homeContainer}>
       <h1>Welcome to Our Website</h1>
+      <h2>Our Project</h2>
+      <p>
+        Our project aims to develop a web application that provides a platform
+        for organizing and managing events. It allows users to create, view, and
+        participate in various events across different categories. The app
+        offers features such as event registration, scheduling, and
+        collaboration tools to enhance the overall event management experience.
+      </p>
       <h2>About Us</h2>
       <div className={styles.programmer}>
         <h3>Nick</h3>
