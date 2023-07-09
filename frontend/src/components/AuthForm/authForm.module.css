@@ -1,0 +1,48 @@
+.authFormContainer {
+  margin-top: 20px;
+}
+
+.authFormContainer h2 {
+  margin-bottom: 10px;
+}
+
+.authFormContainer form {
+  display: grid;
+  gap: 10px;
+}
+
+.authFormContainer input,
+.authFormContainer select {
+  padding: 5px;
+}
+
+.authFormContainer p {
+  margin-top: 10px;
+  color: #ff0000;
+}
+
+.authFormContainer a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.authFormContainer a:hover {
+  color: #0056b3;
+}
+.authFormContainer button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.authFormContainer button:hover {
+  background-color: #0056b3;
+}

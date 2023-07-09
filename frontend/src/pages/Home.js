@@ -1,11 +1,11 @@
 import React from 'react';
-
+import styles from '../pagesStyles/home.module.css';
 function Home() {
   return (
-    <div>
+    <div className={styles.homeContainer}>
       <h1>Welcome to Our Website</h1>
       <h2>About Us</h2>
-      <div className="programmer">
+      <div className={styles.programmer}>
         <h3>Nick</h3>
         <p>
           Nick is a talented programmer from Haifa with a passion for web
@@ -13,7 +13,7 @@ function Home() {
           creating beautiful and responsive user interfaces.
         </p>
       </div>
-      <div className="programmer">
+      <div className={styles.programmer}>
         <h3>Saar</h3>
         <p>
           Saar is a skilled programmer based in Haifa. He has expertise in both
@@ -21,7 +21,7 @@ function Home() {
           problems and building robust and scalable web applications.
         </p>
       </div>
-      <div className="programmer">
+      <div className={styles.programmer}>
         <h3>Maher</h3>
         <p>
           Maher is a talented programmer hailing from Haifa. She has a strong

@@ -1,13 +1,14 @@
 import React from 'react';
+import classes from './nav.module.css';
 
 const Nav = ({ handleLinkClick, activeLink }) => {
   return (
-    <nav>
+    <nav className={classes.nav}>
       <ul>
         <li>
           <a
             href="#"
-            className={activeLink === 'home' ? 'active' : ''}
+            className={activeLink === 'home' ? classes.active : ''}
             onClick={() => handleLinkClick('home')}
           >
             Home
@@ -16,7 +17,7 @@ const Nav = ({ handleLinkClick, activeLink }) => {
         <li>
           <a
             href="#"
-            className={activeLink === 'activities' ? 'active' : ''}
+            className={activeLink === 'activities' ? classes.active : ''}
             onClick={() => handleLinkClick('activities')}
           >
             Activities

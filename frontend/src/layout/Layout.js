@@ -21,7 +21,7 @@ const Layout = () => {
   return (
     <div className={styles.layoutContainer}>
       <Nav handleLinkClick={handleLinkClick} activeLink={activeLink} />
-      <div className={styles.content}>{content}</div>
+      <main className={styles.content}>{content}</main>
       <Footer />
     </div>
   );

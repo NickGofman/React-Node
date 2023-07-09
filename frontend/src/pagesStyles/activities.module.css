@@ -1,0 +1,57 @@
+.activities {
+  padding: 20px;
+  width: 60%;
+}
+
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.controls select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+
+.deleteButton {
+  background-color: #ff3b3b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.deleteButton:hover {
+  background-color: #f00;
+}
+
+.createEventForm {
+  margin-top: 20px;
+}
+
+.createEventForm h2 {
+  margin-bottom: 10px;
+}
+
+.createEventForm form {
+  display: grid;
+  gap: 10px;
+}
+
+.createEventForm input,
+.createEventForm select {
+  padding: 5px;
+}

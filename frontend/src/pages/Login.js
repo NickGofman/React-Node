@@ -1,40 +1,38 @@
 import React, { useState } from 'react';
-
-import LoginForm from '../components/loginForm/LoginForm';
 import Layout from '../layout/Layout';
+import AuthForm from '../components/AuthForm/AuthForm';
+import styles from '../pagesStyles/login.module.css';
 
-import Register from './Register';
 function Login() {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isRegister, setIsRegister] = useState(false);
 
   function goToHome() {
-    setIsLogin(true);
-    console.log('isLogin', isLogin);
+    setIsLoggedIn(true);
   }
-  function goToRegister() {
-    setIsRegister(true);
-    setIsLogin(false);
-  }
+
   function goToLogin() {
-    setIsLogin(false);
+    setIsLoggedIn(false);
     setIsRegister(false);
   }
   return (
-    <div>
-      {isLogin ? (
+    <>
+      {isLoggedIn ? (
         <Layout />
       ) : isRegister ? (
-        <Register goToLogin={goToLogin} />
+        <div className={styles.loginContainer}>
+          <div className={styles.loginContent}>
+            <AuthForm goToLogin={goToLogin} goToHome={goToHome} />
+          </div>
+        </div>
       ) : (
-        <>
-          <LoginForm goToHome={goToHome} />
-          <a href="#" onClick={goToRegister}>
-            Register
-          </a>
-        </>
+        <div className={styles.loginContainer}>
+          <div className={styles.loginContent}>
+            <AuthForm goToHome={goToHome} goToLogin={goToLogin} />
+          </div>
+        </div>
       )}
-    </div>
+    </>
   );
 }
 

@@ -1,30 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import styles from './createNewEventForm.module.css';
 import Button from '../Button/Button';
-import axios from '../../api/axios';
 import Input from '../input/Input';
 
-function CreateEventForm() {
-  const [musicalStyleList, setMusicalStyleList] = useState([]);
-
-  //TODO get events style list
-  // useEffect(() => {
-  //   // Fetch the event style list using Axios
-  //   axios
-  //     .get('/api/eventStyles') // Adjust the API endpoint URL as needed
-  //     .then((response) => {
-  //       setMusicalStyleList(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log('Error fetching event styles:', error);
-  //     });
-  // }, []);
-
+function CreateEventForm({ handleCreate, musicalStyleList }) {
   const [inputs, setInputs] = useState({
-    date: '',
+    eventDate: '',
     income: '',
     eventName: '',
-    time: '21:00',
+    eventTime: '',
+    eventStyleId: '1',
+    eventStyleName: '',
   });
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     setInputs((prev) => ({
@@ -32,65 +20,81 @@ function CreateEventForm() {
       [e.target.name]: e.target.value,
     }));
   };
+
   const handleChangeStyle = (e) => {
-    // console.log('INDEX', selectedIndex);
-    setInputs((prevState) => ({ ...prevState, eventStyleId: e }));
+    const selectedStyleId = e.target.value;
+    const selectedStyleName = e.target.options[selectedStyleId - 1].text;
+
+    setInputs((prevState) => ({
+      ...prevState,
+      eventStyleName: selectedStyleName,
+      eventStyleId: selectedStyleId,
+    }));
   };
 
-  //create new event
-  const handleCreateEvent = () => {
+  const handleCreateEvent = (e) => {
+    e.preventDefault();
     if (
-      inputs.date !== '' &&
-      inputs.time !== '' &&
-      inputs.eventStyleId !== undefined
+      inputs.eventDate !== '' &&
+      inputs.eventTime !== '' &&
+      inputs.eventStyleId !== ''
     ) {
-      // TODO make axios call add the data to events table
+      handleCreate(inputs);
+      setError('Event Create!');
+      setInputs({
+        eventDate: '',
+        income: '',
+        eventName: '',
+        eventTime: '',
+        eventStyleId: '1',
+        eventStyleName: '',
+      });
     } else {
-      console.log('else:');
-      return;
+      setError('Invalid input');
     }
   };
-  console.log(inputs);
+
   return (
     <>
       <h2>Create New Event</h2>
 
-      <div>
-        <p>Pick A Date:</p>
-
+      <form className={styles.form}>
         <Input
-          name="date"
+          name="eventDate"
           type="date"
           label="Date"
           value={inputs.date}
-          handleChange={handleChange}
+          onChange={handleChange}
         />
         <Input
-          name="time"
-          label="Time"
+          name="eventTime"
           type="time"
+          label="Time"
           value={inputs.time}
-          handleChange={handleChange}
+          onChange={handleChange}
         />
         <Input
-          label="Event Name"
           name="eventName"
           type="text"
+          label="Event Name"
           value={inputs.eventName}
-          handleChange={handleChange}
+          onChange={handleChange}
         />
         <Input
-          label="Event Income"
           name="income"
           type="text"
+          label="Event Income"
           value={inputs.income}
-          handleChange={handleChange}
+          onChange={handleChange}
         />
-
-        <select name="musicalStyle" onChange={handleChangeStyle}>
-          {musicalStyleList?.data?.map((style) => (
+        <label>Select Musical Style</label>
+        <select
+          className={styles.select}
+          name="eventStyleId"
+          onChange={handleChangeStyle}
+        >
+          {musicalStyleList?.map((style) => (
             <option
-              name="musicalStyle"
               key={style.eventStyleId}
               value={style.eventStyleId.toString()}
             >
@@ -98,9 +102,14 @@ function CreateEventForm() {
             </option>
           ))}
         </select>
-      </div>
+        <p>{error}</p>
+      </form>
 
-      <Button text="Add New Event" onClick={handleCreateEvent} />
+      <Button
+        className={styles.button}
+        handleClick={handleCreateEvent}
+        text="Add New Event"
+      />
     </>
   );
 }

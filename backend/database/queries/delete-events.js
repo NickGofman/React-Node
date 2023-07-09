@@ -1,27 +1,18 @@
 const doQuery = require('../query');
 
-/**
- * Delete person and all its dependencies
- * @param {*} req
- * @param {*} res
- */
 async function deleteEvents(req, res) {
-  // delete from the database - defined with cascade
-  // all dependencies will be removed
-
-  // const id = req.params.id;
-
-  // console.log(req.params);
-  // let param = [id];
-  // // delete from database
-  // const sql = `DELETE FROM people WHERE id =?`;
-
-  // const result = await doQuery(sql, param);
-
-  // // send response
-  // res.json({
-  //   success: true,
-  // });
+  try {
+    console.log(req.params)
+    const eventStyleId = req.params.eventStyleId;
+    const sql =
+      'DELETE FROM events WHERE eventStyleId IN (SELECT eventStyleId FROM eventstyles WHERE eventStyleId = ?)';
+    const params = [eventStyleId];
+    const result = await doQuery(sql, params);
+    res.json({ success: true, message: 'Events deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting events:', error);
+    res.status(500).json({ success: false, error: 'Internal Server Error' });
+  }
 }
 
 module.exports = deleteEvents;

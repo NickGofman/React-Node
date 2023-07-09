@@ -1,0 +1,38 @@
+.form {
+  display: grid;
+  gap: 10px;
+}
+
+.form label {
+  text-align: start;
+  font-weight: bold;
+}
+.select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
+.form p {
+  margin-top: 10px;
+  color: #ff0000;
+}
