@@ -18,9 +18,12 @@
 .controls {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+.controls p{
+  color: red;
 }
 
 .controls select {

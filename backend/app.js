@@ -12,8 +12,7 @@ const apiAuth = require('./routes/apiAuth');
 
 // automatically load all FE files included
 // static assets
-// app.use(express.static(__dirname + '/public'));
-app.use(express.static(path.join('../frontend/public')));
+app.use(express.static(path.join('../frontend/src')));
 
 // parse form data
 app.use(express.urlencoded({ extended: false }));

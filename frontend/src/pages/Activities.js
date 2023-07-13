@@ -11,6 +11,7 @@ function Activities() {
 
   const [events, setEvents] = useState([]);
   const [inputs, setInputs] = useState({ eventStyleId: '1' });
+  const [message,setMessage]=useState('');
   const [musicalStyleList, setMusicalStyleList] = useState([]);
 
   useEffect(() => {
@@ -46,10 +47,11 @@ function Activities() {
         // Update the events list after successful deletion
         setEvents(
           events.filter((event) => event.eventStyleId != inputs.eventStyleId)
-        );
+          );
+          setMessage(response.data.message)
       })
       .catch((error) => {
-        console.log('Error deleting events:', error);
+        setMessage(response.data.message)
       });
   };
 
@@ -113,6 +115,7 @@ function Activities() {
             handleClick={handleDelete}
           />
         </div>
+        <p>{message}</p>
       </div>
 
       <div className={styles.cardContainer}>
