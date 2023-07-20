@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './createNewEventForm.module.css';
 import Button from '../Button/Button';
 import Input from '../input/Input';
+import Select from '../Select/Select';
 
 function CreateEventForm({ handleCreate, musicalStyleList }) {
   const [inputs, setInputs] = useState({
@@ -14,13 +15,15 @@ function CreateEventForm({ handleCreate, musicalStyleList }) {
   });
   const [error, setError] = useState('');
 
+  //handle inputs state change
   const handleChange = (e) => {
     setInputs((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
   };
-
+  
+  //handle musical style state change
   const handleChangeStyle = (e) => {
     const selectedStyleId = e.target.value;
     const selectedStyleName = e.target.options[selectedStyleId - 1].text;
@@ -32,6 +35,7 @@ function CreateEventForm({ handleCreate, musicalStyleList }) {
     }));
   };
 
+  //handle the create event- make a request to the backend
   const handleCreateEvent = (e) => {
     e.preventDefault();
     if (
@@ -90,20 +94,11 @@ function CreateEventForm({ handleCreate, musicalStyleList }) {
           onChange={handleChange}
         />
         <label>Select Musical Style</label>
-        <select
-          className={styles.select}
+        <Select
           name="eventStyleId"
           onChange={handleChangeStyle}
-        >
-          {musicalStyleList?.map((style) => (
-            <option
-              key={style.eventStyleId}
-              value={style.eventStyleId.toString()}
-            >
-              {style.eventStyleName}
-            </option>
-          ))}
-        </select>
+          musicalStyleList={musicalStyleList}
+        />
         <p>{error}</p>
       </form>
 

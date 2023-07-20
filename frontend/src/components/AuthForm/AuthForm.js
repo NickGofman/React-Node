@@ -11,18 +11,22 @@ const AuthForm = (props) => {
   const [error, setError] = useState('');
   const [isRegister, setIsRegister] = useState(false);
 
+  //handle username state input  change
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
 
+  //handle password input state change
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
 
+  //handle confirm password input state change
   const handleConfirmPasswordChange = (e) => {
     setConfirmPassword(e.target.value);
   };
 
+  //handle user Registration/Login
   const handleClick = (e) => {
     e.preventDefault();
 
@@ -137,7 +141,7 @@ const AuthForm = (props) => {
           </div>
         )}
         <Button
-        className={styles.authFormContainer}
+          className={styles.authFormContainer}
           text={isRegister ? 'Register' : 'Login'}
           handleClick={handleClick}
         />

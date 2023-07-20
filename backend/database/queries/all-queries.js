@@ -5,6 +5,7 @@ const getAllEventStyles = require('./all-events-styles');
 const login = require('./login');
 const register = require('./register');
 
+//combine all logics module in one module
 module.exports = {
   deleteEvents,
   addEvent,

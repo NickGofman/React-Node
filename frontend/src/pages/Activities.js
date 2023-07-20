@@ -2,18 +2,17 @@ import CreateEventForm from '../components/newEventForm/CreateEventForm';
 import React, { useEffect, useState } from 'react';
 import Card from '../components/cardEvent/Card';
 import axios from 'axios';
-import Input from '../components/input/Input';
 import Button from '../components/Button/Button';
 import styles from '../pagesStyles/activities.module.css';
+import Select from '../components/Select/Select';
 import { v4 as uuidv4 } from 'uuid';
 function Activities() {
-  // const [events, setEvents] = useState([]);
 
   const [events, setEvents] = useState([]);
   const [inputs, setInputs] = useState({ eventStyleId: '1' });
-  const [message,setMessage]=useState('');
+  const [message, setMessage] = useState('');
   const [musicalStyleList, setMusicalStyleList] = useState([]);
-
+  let isDeleted=false;
   useEffect(() => {
     // Fetch the event style list using Axios
     axios
@@ -43,15 +42,16 @@ function Activities() {
       .delete(`/api/events/${inputs.eventStyleId}`)
       // Include the data property with eventStyleName
       .then((response) => {
-        console.log('Delete response:', response.data);
         // Update the events list after successful deletion
         setEvents(
           events.filter((event) => event.eventStyleId != inputs.eventStyleId)
-          );
-          setMessage(response.data.message)
+        );
+        
+        setMessage(response.data.message);
+        isDeleted=response.data.success;
       })
       .catch((error) => {
-        setMessage(response.data.message)
+        setMessage(response.data.message);
       });
   };
 
@@ -62,7 +62,6 @@ function Activities() {
     axios
       .post('/api/events', eventData) // Adjust the API endpoint URL as needed
       .then((response) => {
-        console.log('Create response:', response.data);
         // Update the events list after successful creation
         const newEvent = {
           ...response.data,
@@ -75,14 +74,12 @@ function Activities() {
       });
   };
   const handleChangeStyle = (e) => {
-    // names = names.split('\n');
     const selectedStyleId = e.target.value;
     setInputs((prevState) => ({
       ...prevState,
       eventStyleId: selectedStyleId, // Update the eventStyleId with the selected value
     }));
   };
-  console.log('events', events);
   function sortByDate(events) {
     return events
       .slice()
@@ -99,23 +96,18 @@ function Activities() {
       <div className={styles.controls}>
         <h3>Delete event by style: </h3>
         <div>
-          <select name="eventStyleId" onChange={handleChangeStyle}>
-            {musicalStyleList?.map((style) => (
-              <option
-                key={style.eventStyleId}
-                value={style.eventStyleId.toString()}
-              >
-                {style.eventStyleName}
-              </option>
-            ))}
-          </select>
+          <Select
+            name="eventStyleId"
+            onChange={handleChangeStyle}
+            musicalStyleList={musicalStyleList}
+          />
           <Button
             text="Delete"
             className={styles.deleteButton}
             handleClick={handleDelete}
           />
         </div>
-        <p>{message}</p>
+        <p style={{ color:  isDeleted  ? '#41DB6E' : 'red' }}>{message}</p>
       </div>
 
       <div className={styles.cardContainer}>

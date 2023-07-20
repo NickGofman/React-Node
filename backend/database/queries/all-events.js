@@ -1,8 +1,10 @@
 const doQuery = require('../query');
 /**
- * Delete person and all its dependencies
- * @param {*} req
- * @param {*} res
+ * Retrieves all events from the database, along with their associated event style names.
+ * Sends the combined event data as a JSON response to the client.
+ * @param {*} req - The HTTP request object.
+ * @param {*} res - The HTTP response object used to send a   response back to the client.
+ *@returns {JSON} A JSON response containing an array of event data, or an error message if an error occurs.
  */
 async function getAllEvents(req, res) {
   try {
@@ -10,7 +12,6 @@ async function getAllEvents(req, res) {
     const result = await doQuery(sql);
     res.json(result);
   } catch (error) {
-    console.error('Error retrieving events:', error);
     res.status(500).json({ success: false, error: 'Internal Server Error' });
   }
 }
