@@ -12,7 +12,6 @@ function Activities() {
   const [inputs, setInputs] = useState({ eventStyleId: '1' });
   const [message, setMessage] = useState('');
   const [musicalStyleList, setMusicalStyleList] = useState([]);
-  let isDeleted=false;
   useEffect(() => {
     // Fetch the event style list using Axios
     axios
@@ -48,7 +47,6 @@ function Activities() {
         );
         
         setMessage(response.data.message);
-        isDeleted=response.data.success;
       })
       .catch((error) => {
         setMessage(response.data.message);
@@ -80,9 +78,10 @@ function Activities() {
       eventStyleId: selectedStyleId, // Update the eventStyleId with the selected value
     }));
   };
+
+  //function sort the events by date
   function sortByDate(events) {
     return events
-      .slice()
       .sort((a, b) => new Date(a.eventDate) - new Date(b.eventDate));
   }
   return (
@@ -107,7 +106,7 @@ function Activities() {
             handleClick={handleDelete}
           />
         </div>
-        <p style={{ color:  isDeleted  ? '#41DB6E' : 'red' }}>{message}</p>
+        <p>{message}</p>
       </div>
 
       <div className={styles.cardContainer}>
